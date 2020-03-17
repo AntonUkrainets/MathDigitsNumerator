@@ -1,14 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using DigitSequence.Business.Implements;
 using DigitSequence.Business.Interfaces;
-using DigitSequence.Parser.Implements;
-using DigitSequence.Parser.Interfaces;
-using DigitSequence.Validation.Implements;
-using Liba.Logger.Implements;
-using Liba.Logger.Interfaces;
+using DigitSequence.Core;
 
 namespace DigitSequence
 {
@@ -16,63 +8,25 @@ namespace DigitSequence
     {
         public static void Main(string[] args)
         {
-            var logPath = "application.log";
-
-            ILogger logger = new AggregatedLogger
-            (
-                new FileLogger(logPath),
-                new ConsoleLogger()
-            );
+            var env = new AppEnvironment();
 
             try
             {
-                var validator = new Validator();
-                if (!validator.IsArgumentValid(args))
+                if (env.ShowHelpRequired(args))
                 {
-                    logger.LogInformation(
-                        $"Input must be like <SequenceNumber>;{Environment.NewLine}" +
-                        $"<FibonacciStartIndex> <FibonacciEndIndex>");
-
+                    env.ShowHelp();
                     return;
                 }
 
-                IEnumerable<IParser> inputDataParsers = new List<IParser>
-                {
-                    new SequenceParser(),
-                    new FibonacciParser()
-                };
+                var task = env.GetTask(args);
 
-                var inputDataParser = inputDataParsers
-                        .FirstOrDefault(p => p.CanParse(args.Length));
+                IOperationResult operationResult = env.Calculate(task);
 
-                var operation = inputDataParser.Parse(args);
-
-                var operationNumerators = new List<IOperationGenerator>
-                {
-                    new FibonacciGenerator(),
-                    new SequenceGenerator()
-                };
-
-                var operationNumerator = operationNumerators
-                        .FirstOrDefault(o => o.CanCalculate(operation));
-
-                if (operationNumerator == null)
-                    throw new NotSupportedException($"Operation '{operation}' is not supported.");
-
-                var result = operationNumerator.Calculate(operation);
-
-                StringBuilder stringBuilder = new StringBuilder();
-
-                foreach (var str in result)
-                {
-                    stringBuilder.Append($"{res} ");
-                }
-
-                logger.LogInformation($"{stringBuilder}");
+                env.LogResult(operationResult);
             }
             catch (Exception ex)
             {
-                logger.LogInformation(ex.Message);
+                env.Logger.LogInformation(ex.Message);
             }
         }
     }

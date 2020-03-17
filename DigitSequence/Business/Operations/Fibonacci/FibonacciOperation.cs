@@ -1,25 +1,23 @@
 ﻿using System.Collections.Generic;
 using DigitSequence.Business.Interfaces;
-using DigitSequence.Model;
-using DigitSequence.Operations;
 
-namespace DigitSequence.Business.Implements
+namespace DigitSequence.Business.Operations.Fibonacci
 {
-    public class FibonacciGenerator : IOperationGenerator
+    public class FibonacciOperation : IOperation
     {
-        public bool CanCalculate(IMathOperation operation)
+        public bool CanCalculate(IMathTask operation)
         {
-            return operation is FibonacciOperation;
+            return operation is FibonacciTask;
         }
 
-        public int[] Calculate(IMathOperation operation)
+        public IOperationResult Calculate(IMathTask operation)
         {
-            var fibonacciOperation = (FibonacciOperation)operation;
+            var fibonacciOperation = (FibonacciTask)operation;
 
             return Calculate(fibonacciOperation);
         }
 
-        private int[] Calculate(FibonacciOperation operation)
+        private IOperationResult Calculate(FibonacciTask operation)
         {
             var a = operation.Start;
             var b = 1;
@@ -39,7 +37,7 @@ namespace DigitSequence.Business.Implements
                 b = temp + b;
             }
 
-            return numbersFibonacci.ToArray();
+            return MathOperationResult.SetResult(numbersFibonacci.ToArray());
         }
     }
 }

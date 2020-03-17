@@ -1,5 +1,5 @@
-﻿using DigitSequence.Business.Implements;
-using DigitSequence.Operations;
+﻿using DigitSequence.Business.Operations.Fibonacci;
+using DigitSequence.Core;
 using Xunit;
 
 namespace DigitSequenceTests
@@ -15,53 +15,14 @@ namespace DigitSequenceTests
         public void ConvertToFibonacci(int startIndex, int endIndex, int[] expectedValue)
         {
             // Arange
-            var operation = new FibonacciOperation 
-            { 
-                Start = startIndex,
-                End = endIndex
-            };
-
-            var sequenceNumerator = new FibonacciGenerator();
+            var env = new AppEnvironment();
+            var task = new FibonacciTask(startIndex, endIndex);
 
             // Act
-            var actualValue = sequenceNumerator.Calculate(operation);
+            var actualValue = env.Calculate(task);
 
             // Assert
-            Assert.Equal(expectedValue, actualValue);
-        }
-
-        [Fact]
-        public void CanCalculate_Positive()
-        {
-            // Arange
-            var expectedValue = true;
-
-            var sequenceNumerator = new FibonacciGenerator();
-
-            var operation = new FibonacciOperation();
-
-            // Act
-            var actulValue = sequenceNumerator.CanCalculate(operation);
-
-            // Assert
-            Assert.Equal(expectedValue, actulValue);
-        }
-
-        [Fact]
-        public void CanCalculate_Negative()
-        {
-            // Arange
-            var expectedValue = false;
-
-            var sequenceNumerator = new FibonacciGenerator();
-
-            var operation = new SequenceOperation();
-
-            // Act
-            var actulValue = sequenceNumerator.CanCalculate(operation);
-
-            // Assert
-            Assert.Equal(expectedValue, actulValue);
+            Assert.Equal(expectedValue, actualValue.Result);
         }
     }
 }

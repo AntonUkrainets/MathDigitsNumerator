@@ -14,7 +14,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\DigitSequence\DigitSequence.csproj" />
+    <ProjectReference Include="..\DigitSequence\MathDigitsNumerator.csproj" />
   </ItemGroup>
 
 </Project>

@@ -2,7 +2,7 @@
   "profiles": {
     "DigitSequence": {
       "commandName": "Project",
-      "commandLineArgs": "3 15"
+      "commandLineArgs": "0 15"
     }
   }
 }
