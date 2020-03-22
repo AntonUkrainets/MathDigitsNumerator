@@ -8,25 +8,25 @@ namespace DigitSequence
     {
         public static void Main(string[] args)
         {
-            var env = new AppEnvironment();
+            var environment = new AppEnvironment();
 
             try
-            {
-                if (env.ShowHelpRequired(args))
+            { 
+                if (environment.ShowHelpRequired(args))
                 {
-                    env.ShowHelp();
+                    environment.ShowHelp();
                     return;
                 }
 
-                var task = env.GetTask(args);
+                var task = environment.GetTask(args);
 
-                IOperationResult operationResult = env.Calculate(task);
+                IOperationResult operationResult = environment.Calculate(task);
 
-                env.LogResult(operationResult);
+                environment.LogResult(operationResult);
             }
             catch (Exception ex)
             {
-                env.Logger.LogInformation(ex.Message);
+                environment.Logger.LogInformation(ex.Message);
             }
         }
     }

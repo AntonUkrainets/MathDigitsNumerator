@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using DigitSequence.Business.Interfaces;
@@ -18,9 +17,9 @@ namespace DigitSequence.Core
     {
         public ILogger Logger { get; }
 
-        public IEnumerable<IParser> InputDataParsers { get; }
+        public IParser[] InputDataParsers { get; }
 
-        public IEnumerable<IOperation> MathOperations { get; }
+        public IOperation[] MathOperations { get; }
 
         public AppEnvironment(
             string logPath = "application.log"
@@ -94,7 +93,7 @@ namespace DigitSequence.Core
                 stringBuilder.Append($"{str} ");
             }
 
-            Logger.LogInformation($"{stringBuilder}");
+            Logger.LogInformation(stringBuilder.ToString().Trim());
         }
     }
 }

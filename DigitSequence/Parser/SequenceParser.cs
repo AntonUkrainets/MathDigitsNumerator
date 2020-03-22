@@ -14,10 +14,22 @@ namespace DigitSequence.Parser
 
         public IMathTask Parse(string[] args)
         {
-            if (!int.TryParse(args[0], out int endIndex))
-                throw new FormatException($"End index '{endIndex}' has incorrect format");
+            TryParseToDigit(args[0], out int endIndex);
+            IsPositiveNumber(endIndex);
 
             return new SequenceTask(endIndex);
+        }
+
+        private void TryParseToDigit(string inputString, out int index)
+        {
+            if (!int.TryParse(inputString, out index))
+                throw new FormatException($"Start index '{index}' has incorrect format");
+        }
+
+        private void IsPositiveNumber(int number)
+        {
+            if (number < 0)
+                throw new ArgumentException($"The number '{number}' must be greather or equals '0'");
         }
     }
 }

@@ -5,7 +5,7 @@ VisualStudioVersion = 16.0.29806.167
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MathDigitsNumerator", "DigitSequence\MathDigitsNumerator.csproj", "{7734EAC0-6088-42E7-914A-16D637197C5B}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DigitSequenceTests", "DigitSequenceTests\DigitSequenceTests.csproj", "{2ECC633D-1A22-4C3C-BA51-D4C64AB69A43}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MathDigitsNumeratorTests", "DigitSequenceTests\MathDigitsNumeratorTests.csproj", "{2ECC633D-1A22-4C3C-BA51-D4C64AB69A43}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Liba", "Liba\Liba.csproj", "{C2859A8F-8D25-4931-893D-5DB7BE370C80}"
 EndProject

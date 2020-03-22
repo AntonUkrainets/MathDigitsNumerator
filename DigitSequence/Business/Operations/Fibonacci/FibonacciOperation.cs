@@ -28,7 +28,7 @@ namespace DigitSequence.Business.Operations.Fibonacci
                 int index = operation.Start;
                 a <= operation.End;
                 index++
-            )
+            ) 
             {
                 numbersFibonacci.Add(a);
 
