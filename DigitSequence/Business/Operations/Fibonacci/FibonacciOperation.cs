@@ -14,10 +14,10 @@ namespace DigitSequence.Business.Operations.Fibonacci
         {
             var fibonacciOperation = (FibonacciTask)operation;
 
-            return Calculate(fibonacciOperation);
+            return CalculateFibonacci(fibonacciOperation);
         }
 
-        private IOperationResult Calculate(FibonacciTask operation)
+        private IOperationResult CalculateFibonacci(FibonacciTask operation)
         {
             var a = operation.Start;
             var b = 1;

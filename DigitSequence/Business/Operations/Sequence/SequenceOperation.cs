@@ -14,10 +14,10 @@ namespace DigitSequence.Business.Operations.Sequence
         {
             var sequenceOperation = (SequenceTask)operation;
 
-            return Calculate(sequenceOperation);
+            return CalculateSequence(sequenceOperation);
         }
 
-        private IOperationResult Calculate(SequenceTask operation)
+        private IOperationResult CalculateSequence(SequenceTask operation)
         {
             var sequence = new List<int>();
 

@@ -1,10 +1,11 @@
-﻿using DigitSequence.Business.Interfaces;
+﻿using System.Collections.Generic;
+using DigitSequence.Business.Interfaces;
 
 namespace DigitSequence.Business.Operations
 {
     public class MathOperationResult : IOperationResult
     {
-        public int[] Result { get; }
+        public IEnumerable<int> Result { get; }
 
         public string ErrorMessage { get; }
 

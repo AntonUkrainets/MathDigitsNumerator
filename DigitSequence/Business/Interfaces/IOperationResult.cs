@@ -1,8 +1,10 @@
-﻿namespace DigitSequence.Business.Interfaces
+﻿using System.Collections.Generic;
+
+namespace DigitSequence.Business.Interfaces
 {
     public interface IOperationResult
-    {//IEnumerable
-        int[] Result { get; }
+    {
+        IEnumerable<int> Result { get; }
         string ErrorMessage { get; }
     }
 }
