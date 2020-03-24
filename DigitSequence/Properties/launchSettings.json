@@ -1,8 +1,0 @@
-{
-  "profiles": {
-    "DigitSequence": {
-      "commandName": "Project",
-      "commandLineArgs": "50"
-    }
-  }
-}

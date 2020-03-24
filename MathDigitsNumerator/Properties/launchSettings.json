@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "MathDigitsNumerator": {
+      "commandName": "Project",
+      "commandLineArgs": "50"
+    }
+  }
+}
